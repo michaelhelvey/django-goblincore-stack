@@ -1,0 +1,17 @@
+# Build / vendor artifacts:
+node_modules
+__pycache__/
+
+# Distribution / packaging
+.Python
+build/
+dist/
+
+# Development
+*.log
+*.sqlite3
+.env.*
+.ruff_cache
+
+# Editors
+.vscode
