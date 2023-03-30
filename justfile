@@ -19,3 +19,4 @@ static-dev:
 
 static-prod:
 	pnpm build
+	pipenv run python ./manage.py collectstatic
