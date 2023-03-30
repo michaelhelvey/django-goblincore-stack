@@ -11,9 +11,11 @@ django-allauth = "*"
 werkzeug = "*"
 dj-database-url = "*"
 psycopg2 = "*"
+gunicorn = "*"
 
 [dev-packages]
 black = "*"
+ruff = "*"
 
 [requires]
 python_version = "3.11"
