@@ -8,8 +8,11 @@ format:
 migrate:
 	pipenv run python ./manage.py migrate
 
+test:
+	pipenv run pytest
+
 lint:
-	ruff .
+	pipenv run ruff .
 
 static-dev:
 	pnpm dev

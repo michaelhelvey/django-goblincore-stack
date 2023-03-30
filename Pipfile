@@ -16,6 +16,9 @@ gunicorn = "*"
 [dev-packages]
 black = "*"
 ruff = "*"
+pytest = "*"
+pytest-env = "*"
+pytest-django = "*"
 
 [requires]
 python_version = "3.11"

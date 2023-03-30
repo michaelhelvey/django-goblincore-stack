@@ -3,3 +3,9 @@ line-length = 100
 
 [tool.ruff]
 line-length = 100
+
+[tool.pytest.ini_options]
+env = [
+    "DJANGO_SETTINGS_MODULE=base_site.settings",
+    "ENV=test"
+]
