@@ -5,6 +5,10 @@ default:
 format:
 	pipenv run black -l 100 .
 
+alias mm := makemigrations
+makemigrations:
+	pipenv run python ./manage.py makemigrations
+
 migrate:
 	pipenv run python ./manage.py migrate
 

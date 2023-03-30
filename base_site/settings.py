@@ -43,8 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django_extensions",
-
-    "app"
+    "app",
 ]
 
 MIDDLEWARE = [
@@ -79,6 +78,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "base_site.wsgi.application"
+
+AUTH_USER_MODEL = "app.User"
 
 
 # Database
