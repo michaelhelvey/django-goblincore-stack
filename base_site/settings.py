@@ -30,19 +30,26 @@ SECRET_KEY = (
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    # Django applications:
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    # Third-party applications:
     "django_extensions",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    # our applications:
     "app",
 ]
 
@@ -62,10 +69,7 @@ ROOT_URLCONF = "base_site.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [
-            path.join(BASE_DIR, "app", "templates"),
-        ],
-        "APP_DIRS": True,
+        "DIRS": [],
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -73,6 +77,17 @@ TEMPLATES = [
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
             ],
+            # I have no idea why this just isn't the default, but at least
+            # currently (Django 4.1), I have to manually NOT cache the templates
+            # in development.
+            "loaders": [
+                (
+                    "django.template.loaders.cached.Loader",
+                    ["django.template.loaders.app_directories.Loader"],
+                )
+            ]
+            if not DEBUG
+            else ["django.template.loaders.app_directories.Loader"],
         },
     },
 ]
@@ -80,6 +95,16 @@ TEMPLATES = [
 WSGI_APPLICATION = "base_site.wsgi.application"
 
 AUTH_USER_MODEL = "app.User"
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+
+SITE_ID = 1
 
 
 # Database
@@ -126,7 +151,7 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STORAGES = {
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
     },
 }
 
