@@ -38,16 +38,16 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
-    # Django applications:
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # our applications:
+
     "app",
-    # Third-party applications:
+    "django.forms",
+
     "django_extensions",
     "allauth",
     "allauth.account",
@@ -96,7 +96,8 @@ TEMPLATES = [
         },
     },
 ]
-FORM_RENDERER = "django.forms.renderers.DjangoDivFormRenderer"
+FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
+
 
 WSGI_APPLICATION = "base_site.wsgi.application"
 

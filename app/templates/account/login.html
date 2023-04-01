@@ -5,20 +5,24 @@
 {% block content %}
 
 <div class="flex flex-col justify-center items-center h-full w-full">
-	<form class="login" method="POST" action="{% url 'account_login' %}" class="flex flex-col">
-		{% csrf_token %}
-		{{ form }}
+	<div class="w-full max-w-md">
+		<h1 class="text-2xl font-bold">Log In</h1>
+		<form method="POST" action="{% url 'account_login' %}" class="grid grid-cols-1 gap-4 mt-8">
+			{% csrf_token %}
 
-		{% if redirect_field_value %}
-			<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-		{% endif %}
+			{{ form.as_div }}
 
-		<a class="button secondaryAction" href="{% url 'account_reset_password' %}">
-			Forgot Password?
-		</a>
+			{% if redirect_field_value %}
+				<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+			{% endif %}
 
-		<button class="primaryAction" type="submit">Log In</button>
-	</form>
+			<a class="" href="{% url 'account_reset_password' %}">
+				Forgot Password?
+			</a>
+
+			<button class="" type="submit">Log In</button>
+		</form>
+	</div>
 </div>
 
 {% endblock content %}
