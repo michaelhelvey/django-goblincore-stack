@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@hotwired/turbo': ^7.3.0
   '@rollup/plugin-node-resolve': ^15.0.1
   '@tailwindcss/forms': ^0.5.3
   '@tailwindcss/typography': ^0.5.9
@@ -19,6 +20,7 @@ specifiers:
   tailwindcss: ^3.2.7
 
 dependencies:
+  '@hotwired/turbo': 7.3.0
   '@rollup/plugin-node-resolve': 15.0.1_rollup@3.20.2
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.2.7
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.2.7
@@ -235,6 +237,11 @@ packages:
     requiresBuild: true
     dev: false
     optional: true
+
+  /@hotwired/turbo/7.3.0:
+    resolution: {integrity: sha512-Dcu+NaSvHLT7EjrDrkEmH4qET2ZJZ5IcCWmNXxNQTBwlnE5tBZfN6WxZ842n5cHV52DH/AKNirbPBtcEXDLW4g==}
+    engines: {node: '>= 14'}
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
