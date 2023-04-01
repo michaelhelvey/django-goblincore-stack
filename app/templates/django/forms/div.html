@@ -18,10 +18,10 @@
         <label for="{{ field.name }}" class="block">
             <span class="text-gray-700">{{ field.label }}</span>
             {{ field }}
+            {% if field.help_text %}<span class="text-slate-600 italic text-sm">{{ field.help_text|safe }}</span>{% endif %}
         </label>
     {% endif %}
 
-    {% if field.help_text %}<div class="helptext">{{ field.help_text|safe }}</div>{% endif %}
     {% if field.use_fieldset %}</fieldset>{% endif %}
 
     {% if forloop.last %}
