@@ -20,7 +20,7 @@ lint:
 
 alias s := shell
 shell:
-	pipenv run python ./manage.py shell_plus
+	pipenv run python ./manage.py shell_plus --ipython
 
 static-dev:
 	pnpm dev

@@ -18,6 +18,7 @@ django-debug-toolbar = "*"
 [dev-packages]
 black = "*"
 isort = "*"
+ipython = "*"
 ruff = "*"
 pytest = "*"
 pytest-env = "*"
