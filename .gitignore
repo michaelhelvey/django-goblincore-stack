@@ -12,6 +12,7 @@ dist/
 *.sqlite3
 .env.*
 .ruff_cache
+.coverage
 
 # Editors
 .vscode

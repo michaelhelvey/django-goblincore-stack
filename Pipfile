@@ -13,6 +13,7 @@ dj-database-url = "*"
 psycopg2 = "*"
 gunicorn = "*"
 factory-boy = "*"
+django-debug-toolbar = "*"
 
 [dev-packages]
 black = "*"
@@ -21,6 +22,7 @@ ruff = "*"
 pytest = "*"
 pytest-env = "*"
 pytest-django = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.11"

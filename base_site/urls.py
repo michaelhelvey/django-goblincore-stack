@@ -16,8 +16,9 @@ Including another URLconf
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
-from app.views.home import HomeView
+
 from app.views.accounts.profile import UserProfileView
+from app.views.home import HomeView
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -36,4 +37,5 @@ if settings.DEBUG:
             EmailDetailView.as_view(),
             name="email_detail",
         ),
+        path("__debug__/", include("debug_toolbar.urls")),
     ]
