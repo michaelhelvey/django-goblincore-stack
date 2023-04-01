@@ -104,6 +104,10 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 
 SITE_ID = 1
 
+SHELL_PLUS_IMPORTS = [
+    "from app.factories import *",
+]
+
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases

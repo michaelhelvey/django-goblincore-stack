@@ -43,4 +43,4 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = _("users")
 
     def __str__(self):
-        return self.email
+        return f"{self.first_name} {self.last_name} <{self.email}>"

@@ -12,6 +12,7 @@ werkzeug = "*"
 dj-database-url = "*"
 psycopg2 = "*"
 gunicorn = "*"
+factory-boy = "*"
 
 [dev-packages]
 black = "*"

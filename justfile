@@ -18,6 +18,10 @@ test:
 lint:
 	pipenv run ruff .
 
+alias s := shell
+shell:
+	pipenv run python ./manage.py shell_plus
+
 static-dev:
 	pnpm dev
 
