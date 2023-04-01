@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@rollup/plugin-node-resolve': ^15.0.1
   '@types/alpinejs': ^3.7.1
+  '@types/node': ^18.15.11
   alpinejs: ^3.12.0
   autoprefixer: ^10.4.14
   esbuild: ^0.17.14
@@ -18,6 +19,7 @@ specifiers:
 dependencies:
   '@rollup/plugin-node-resolve': 15.0.1_rollup@3.20.2
   '@types/alpinejs': 3.7.1
+  '@types/node': 18.15.11
   alpinejs: 3.12.0
   autoprefixer: 10.4.14_postcss@8.4.21
   esbuild: 0.17.14
@@ -297,6 +299,10 @@ packages:
 
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
+    dev: false
+
+  /@types/node/18.15.11:
+    resolution: {integrity: sha512-E5Kwq2n4SbMzQOn6wnmBjuK9ouqlURrcZDVfbo9ftDDTFt3nk7ZKK4GMOzoYgnpQJKcxwQw+lGaBvvlMo0qN/Q==}
     dev: false
 
   /@types/resolve/1.20.2:

@@ -16,6 +16,7 @@ factory-boy = "*"
 
 [dev-packages]
 black = "*"
+isort = "*"
 ruff = "*"
 pytest = "*"
 pytest-env = "*"

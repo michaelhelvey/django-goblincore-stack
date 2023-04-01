@@ -6,7 +6,8 @@
 		"dev": "npm-run-all -p \"build:* {@}\" -- -w",
 		"build": "NODE_ENV=production npm-run-all -p build:*",
 		"build:js": "rollup -c ./rollup.config.mjs",
-		"build:css": "postcss ./app/static/css/* --dir ./app/static/build/css"
+		"build:css": "postcss ./app/static/css/* --dir ./app/static/build/css",
+		"email:dev": "email dev"
 	},
 	"prettier": {
 		"semi": false,
@@ -18,6 +19,7 @@
 	"dependencies": {
 		"@rollup/plugin-node-resolve": "^15.0.1",
 		"@types/alpinejs": "^3.7.1",
+		"@types/node": "^18.15.11",
 		"alpinejs": "^3.12.0",
 		"autoprefixer": "^10.4.14",
 		"esbuild": "^0.17.14",
