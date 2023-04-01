@@ -20,3 +20,4 @@ dist/
 # Django
 staticfiles
 .pytest_cache
+emails

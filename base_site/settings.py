@@ -44,15 +44,14 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "app",
     "django.forms",
-
     "django_extensions",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
     "debug_toolbar",
+    "anymail",
 ]
 
 MIDDLEWARE = [
@@ -96,7 +95,7 @@ TEMPLATES = [
         },
     },
 ]
-FORM_RENDERER = 'django.forms.renderers.TemplatesSetting'
+FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 
 
 WSGI_APPLICATION = "base_site.wsgi.application"
@@ -109,7 +108,29 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_AUTHENTICATION_METHOD = "email"
+
+ANYMAIL = {
+    "MAILGUN_API_KEY": os.getenv("MAILGUN_API_KEY"),
+    "MAILGUN_SENDER_DOMAIN": os.getenv("MAILGUN_SENDER_DOMAIN"),
+}
+
+
+def get_email_backend():
+    """
+    Returns the email backend to be used, depending on environment.
+    """
+
+    if ENV == "production":
+        return "anymail.backends.mailgun.EmailBackend"
+
+    return "django.core.mail.backends.filebased.EmailBackend"
+
+
+EMAIL_BACKEND = get_email_backend()
+EMAIL_FILE_PATH = "emails"
+
 
 SITE_ID = 1
 
