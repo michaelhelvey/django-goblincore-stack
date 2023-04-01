@@ -18,6 +18,9 @@ test:
 lint:
 	pipenv run ruff .
 
+fixtures:
+	pipenv run python ./manage.py loaddata base
+
 alias s := shell
 shell:
 	pipenv run python ./manage.py shell_plus --ipython
