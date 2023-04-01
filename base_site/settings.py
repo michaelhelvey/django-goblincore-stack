@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-from os import path
+import os
 
 import dj_database_url
 
@@ -23,12 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (
-    "django-insecure-n4=1(r%&9=2u_8!0z0)35lzi1_$$klwcoj-v*42_lzx1suatb+"
-)
+SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+ENV = os.getenv("DJANGO_ENV")
+DEBUG = ENV != "production"
 
 
 ALLOWED_HOSTS = []
@@ -110,7 +108,15 @@ SITE_ID = 1
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {"default": dj_database_url.config()}
+if ENV == "test":
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": ":memory:",
+        }
+    }
+else:
+    DATABASES = {"default": dj_database_url.config()}
 
 
 # Password validation

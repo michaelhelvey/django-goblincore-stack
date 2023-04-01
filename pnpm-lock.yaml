@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@rollup/plugin-node-resolve': ^15.0.1
+  '@types/alpinejs': ^3.7.1
   alpinejs: ^3.12.0
   autoprefixer: ^10.4.14
   esbuild: ^0.17.14
@@ -16,6 +17,7 @@ specifiers:
 
 dependencies:
   '@rollup/plugin-node-resolve': 15.0.1_rollup@3.20.2
+  '@types/alpinejs': 3.7.1
   alpinejs: 3.12.0
   autoprefixer: 10.4.14_postcss@8.4.21
   esbuild: 0.17.14
@@ -287,6 +289,12 @@ packages:
     engines: {node: '>=10.13.0'}
     dev: false
 
+  /@types/alpinejs/3.7.1:
+    resolution: {integrity: sha512-gzwyuHXH/meGQQhurMGWlZgMQxe18lMOoSPd7X6CvGoDelHte9EsU7SpTIoRu8yYir0tbHDeaSMdX9LeQz/QtA==}
+    dependencies:
+      '@vue/reactivity': 3.2.47
+    dev: false
+
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: false
@@ -301,8 +309,18 @@ packages:
       '@vue/shared': 3.1.5
     dev: false
 
+  /@vue/reactivity/3.2.47:
+    resolution: {integrity: sha512-7khqQ/75oyyg+N/e+iwV6lpy1f5wq759NdlS1fpAhFXa8VeAIKGgk2E/C4VF59lx5b+Ezs5fpp/5WsRYXQiKxQ==}
+    dependencies:
+      '@vue/shared': 3.2.47
+    dev: false
+
   /@vue/shared/3.1.5:
     resolution: {integrity: sha512-oJ4F3TnvpXaQwZJNF3ZK+kLPHKarDmJjJ6jyzVNDKH9md1dptjC7lWR//jrGuLdek/U6iltWxqAnYOu8gCiOvA==}
+    dev: false
+
+  /@vue/shared/3.2.47:
+    resolution: {integrity: sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ==}
     dev: false
 
   /acorn-node/1.8.2:
