@@ -16,11 +16,15 @@
 				<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
 			{% endif %}
 
-			<a class="" href="{% url 'account_reset_password' %}">
-				Forgot Password?
-			</a>
-
-			<button class="" type="submit">Log In</button>
+			<button class="button" type="submit">Log In</button>
+			<div class="flex justify-between items-center w-full">
+				<a class="text-sm text-slate-600 hover:underline" href="{% url 'account_reset_password' %}">
+					Forgot Password?
+				</a>
+				<a class="text-sm text-slate-600 hover:underline" href="{% url 'account_signup' %}">
+					Create Account
+				</a>
+			</div>
 		</form>
 	</div>
 </div>

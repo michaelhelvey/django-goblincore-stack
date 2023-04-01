@@ -16,3 +16,11 @@ body {
 		opacity: 1;
 	}
 }
+
+.button {
+	@apply bg-indigo-600 text-white font-medium py-2 px-4 rounded;
+}
+
+.errorlist {
+	@apply text-red-600 text-sm;
+}
