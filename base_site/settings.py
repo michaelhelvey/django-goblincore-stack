@@ -96,6 +96,7 @@ TEMPLATES = [
         },
     },
 ]
+FORM_RENDERER = "django.forms.renderers.DjangoDivFormRenderer"
 
 WSGI_APPLICATION = "base_site.wsgi.application"
 

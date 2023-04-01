@@ -1,3 +1,24 @@
-{% extends 'layout/base.html' %} {% block content %}
-<h1>My Custom Login Page</h1>
+{% extends 'layout/base.html' %}
+
+{% block page_title %} Log In {% endblock page_title %}
+
+{% block content %}
+
+<div class="flex flex-col justify-center items-center h-full w-full">
+	<form class="login" method="POST" action="{% url 'account_login' %}" class="flex flex-col">
+		{% csrf_token %}
+		{{ form }}
+
+		{% if redirect_field_value %}
+			<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+		{% endif %}
+
+		<a class="button secondaryAction" href="{% url 'account_reset_password' %}">
+			Forgot Password?
+		</a>
+
+		<button class="primaryAction" type="submit">Log In</button>
+	</form>
+</div>
+
 {% endblock content %}

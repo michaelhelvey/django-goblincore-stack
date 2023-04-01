@@ -8,14 +8,12 @@
 		<link rel="stylesheet" href="{% static 'build/css/tailwind.css' %}" />
 		<script defer src="{% static 'build/js/global.js' %}"></script>
 		<link rel="icon" href="{% static 'img/favicon.ico' %}" />
-		<title>Django Goblincore Stack</title>
+		<title>{% block page_title %}Django Goblincore Stack{% endblock page_title %}</title>
 	</head>
 	<body class="flex flex-col">
 		{% include "layout/partials/header.html" %}
 		<main class="flex flex-1">
-			<!-- prettier-ignore -->
 			{% block content %}
-			<!-- prettier-ignore -->
 			{% endblock %}
 		</main>
 		{% include "layout/partials/footer.html" %}
