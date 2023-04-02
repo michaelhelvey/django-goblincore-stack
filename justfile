@@ -13,11 +13,11 @@ migrate:
 	pipenv run python ./manage.py migrate
 
 alias t := test
-test:
-	pipenv run pytest
+test *ARGS:
+	pipenv run pytest {{ARGS}}
 
-test_coverage:
-	pipenv run pytest --cov
+test_coverage *ARGS:
+	pipenv run pytest --cov {{ARGS}}
 
 lint:
 	pipenv run ruff .

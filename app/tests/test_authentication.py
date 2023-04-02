@@ -153,3 +153,50 @@ class UserLogOutTest(IntegrationTestCase):
         response = self.client.get(response.url)
         self.assertEqual(response.status_code, 200)
         self.assertFalse(response.context["user"].is_authenticated)
+
+
+class PasswordResetTest(IntegrationTestCase):
+    def test_user_can_reset_password(self):
+        user = UserFactory(password="1234")
+        self.assertTrue(user.check_password("1234"))
+
+        url = reverse("account_reset_password")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertPageHasTitle(response, "Reset Password")
+
+        response = self.client.post(url, {"email": user.email})
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse("account_reset_password_done"))
+
+        response = self.client.get(response.url)
+        self.assertPageHasTitle(response, "Password Reset Sent")
+        self.assertLinkGoesToUrl(response, "a#home-link", reverse("home"))
+
+        email = self.getLastEmail()
+        reset_link_regex = r"reset your password.\s+(http:.*/accounts/password/reset/key/.*)\n"
+        reset_link = re.search(reset_link_regex, email.body).group(1)
+
+        response = self.client.get(reset_link)
+        # If the key is valid, the user should be redirected to the reset page
+        self.assertEqual(response.status_code, 302)
+
+        response = self.client.get(response.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertPageHasTitle(response, "Reset Password")
+        self.assertEqual(
+            self.getBySelectorOrFail(response, "h1").text, "Reset Password"
+        )
+
+        new_password = "zaxscf145*^^"
+        response = self.client.post(
+            response.context["action_url"],
+            {"password1": new_password, "password2": new_password},
+        )
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(
+            response.url, reverse("account_reset_password_from_key_done")
+        )
+
+        response = self.client.get(response.url)
+        self.assertPageHasTitle(response, "Password Reset Successful")
