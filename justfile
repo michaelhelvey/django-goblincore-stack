@@ -12,8 +12,12 @@ makemigrations:
 migrate:
 	pipenv run python ./manage.py migrate
 
+alias t := test
 test:
 	pipenv run pytest
+
+test_watch:
+	pipenv run pytest-watch
 
 lint:
 	pipenv run ruff .

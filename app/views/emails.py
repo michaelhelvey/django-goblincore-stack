@@ -5,6 +5,10 @@ from django.contrib import messages
 from django.shortcuts import render
 from django.views.generic import View
 
+"""
+Developer-only views for testing email templates.
+"""
+
 template_dir = os.path.join(settings.BASE_DIR, "app", "templates", "email")
 
 

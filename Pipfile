@@ -25,6 +25,7 @@ pytest = "*"
 pytest-env = "*"
 pytest-django = "*"
 pytest-cov = "*"
+beautifulsoup4 = "*"
 
 [requires]
 python_version = "3.11"

@@ -7,5 +7,5 @@ line-length = 100
 [tool.pytest.ini_options]
 env = [
     "DJANGO_SETTINGS_MODULE=base_site.settings",
-    "DJANGO_ENV=test"
+    "DJANGO_ENV=test",
 ]
