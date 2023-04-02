@@ -122,3 +122,34 @@ class CreateAccountTest(TestCase):
 
         email_addr.refresh_from_db()
         self.assertEqual(email_addr.verified, True)
+
+
+class UserLogOutTest(TestCase):
+    def test_when_a_user_is_logged_out_they_are_redirected_to_the_home_page(
+        self,
+    ):
+        response = self.client.get(reverse("account_logout"))
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse("home"))
+
+    def test_user_can_log_out(self):
+        user = UserFactory()
+        self.client.force_login(user)
+
+        url = reverse("account_logout")
+
+        response = self.client.get(url)
+        self.assertTrue(response.context["user"].is_authenticated)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertPageHasTitle(response, "Log Out")
+        self.assertEqual(
+            self.getBySelectorOrFail(response, "h1").text, "Log Out"
+        )
+
+        response = self.client.post(url)
+        self.assertEqual(response.status_code, 302)
+
+        response = self.client.get(response.url)
+        self.assertEqual(response.status_code, 200)
+        self.assertFalse(response.context["user"].is_authenticated)

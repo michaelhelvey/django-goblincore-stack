@@ -16,8 +16,8 @@ alias t := test
 test:
 	pipenv run pytest
 
-test_watch:
-	pipenv run pytest-watch
+test_coverage:
+	pipenv run pytest --cov
 
 lint:
 	pipenv run ruff .

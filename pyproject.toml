@@ -9,3 +9,10 @@ env = [
     "DJANGO_SETTINGS_MODULE=base_site.settings",
     "DJANGO_ENV=test",
 ]
+
+[tool.coverage.run]
+omit = [
+    "app/utils/test.py",
+    "base_site/settings.py",
+    "base_site/urls.py"
+]
