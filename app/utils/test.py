@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 from bs4.element import Tag
+from django.core import mail
 from django.test import TestCase as DjangoTestCase
 
 
@@ -18,6 +19,10 @@ class TestCase(DjangoTestCase):
 
     def getSoup(self, response):
         return BeautifulSoup(response.content, "html.parser")
+
+    def formErrors(self, response):
+        self.assertTrue("form" in response.context_data, "No form in context")
+        return response.context_data["form"].errors
 
     def assertLinkGoesToUrl(self, response, selector, url):
         link = self.getBySelectorOrFail(response, selector)
@@ -43,3 +48,7 @@ class TestCase(DjangoTestCase):
 
     def assertPageHasTitle(self, response, title):
         self.assertEqual(self.getSoup(response).title.text.strip(), title)
+
+    def getLastEmail(self):
+        self.assertEqual(len(mail.outbox), 1)
+        return mail.outbox[0]
