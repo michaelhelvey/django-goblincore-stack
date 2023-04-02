@@ -19,18 +19,27 @@ class TestCase(DjangoTestCase):
     def getSoup(self, response):
         return BeautifulSoup(response.content, "html.parser")
 
-    def assertLinkGoesToTitle(self, response, selector, title):
-        link = self.getBySelectorOrFail(response, selector)
-        response = self.client.get(link["href"])
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(self.getSoup(response).title.text.strip(), title)
-
     def assertLinkGoesToUrl(self, response, selector, url):
         link = self.getBySelectorOrFail(response, selector)
         response = self.client.get(link["href"])
-        self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.url, url)
+
+        # In asserting that a link goes to a URL, if the response is a redirect,
+        # then it will have a "url" property we can check (and we can trust that
+        # the browser will follow it).  If it's not a redirect, then we can't
+        # check the "url" property, because TemplateResponse doesn't have one,
+        # but we can assume that a successful response to a request for a
+        # specific path will "be" at that path.
+        self.assertTrue(response.status_code < 400)
+        response_url = (
+            response.url
+            if hasattr(response, "url")
+            else response._request.path_info
+        )
+        self.assertEqual(response_url, url)
 
     def assertSelectorDoesNotExist(self, response, selector):
         element = self.getBySelector(response, selector)
         self.assertIsNone(element)
+
+    def assertPageHasTitle(self, response, title):
+        self.assertEqual(self.getSoup(response).title.text.strip(), title)
