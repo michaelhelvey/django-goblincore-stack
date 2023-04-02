@@ -4,7 +4,7 @@ from django.core import mail
 from django.test import TestCase as DjangoTestCase
 
 
-class TestCase(DjangoTestCase):
+class IntegrationTestCase(DjangoTestCase):
     def getBySelectorOrFail(self, response, selector) -> Tag:
         element = self.getBySelector(response, selector)
         self.assertIsNotNone(element)

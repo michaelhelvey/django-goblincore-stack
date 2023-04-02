@@ -5,10 +5,10 @@ from django.shortcuts import reverse
 
 from app.factories import UserFactory
 from app.models import User
-from app.utils.test import TestCase
+from app.utils.test import IntegrationTestCase
 
 
-class UserHomePageTest(TestCase):
+class UserHomePageTest(IntegrationTestCase):
     def test_home_page_shows_login_link_to_logged_out_user(self):
         response = self.client.get(reverse("home"))
         login_link = self.getBySelectorOrFail(response, "a#login-link")
@@ -30,7 +30,7 @@ class UserHomePageTest(TestCase):
         )
 
 
-class LoginTest(TestCase):
+class LoginTest(IntegrationTestCase):
     def test_user_can_log_in(self):
         passwd = "1234"
         user = UserFactory(password=passwd)
@@ -59,7 +59,7 @@ class LoginTest(TestCase):
         )
 
 
-class CreateAccountTest(TestCase):
+class CreateAccountTest(IntegrationTestCase):
     def test_user_can_create_account_and_verify_email(self):
         url = reverse("account_signup")
         response = self.client.get(url)
@@ -124,7 +124,7 @@ class CreateAccountTest(TestCase):
         self.assertEqual(email_addr.verified, True)
 
 
-class UserLogOutTest(TestCase):
+class UserLogOutTest(IntegrationTestCase):
     def test_when_a_user_is_logged_out_they_are_redirected_to_the_home_page(
         self,
     ):
