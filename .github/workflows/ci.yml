@@ -28,6 +28,15 @@ jobs:
             - name: Install dependencies
               run: pipenv sync --dev
 
+            - name: Build static
+              run: |
+                  sudo apt-get update
+                  wget -qO- https://deb.nodesource.com/setup_18.x | sudo bash -
+                  sudo apt-get install -y nodejs
+                  npm install -g pnpm
+                  pnpm install
+                  pnpm build
+
             - name: Setup staticfiles
               run: pipenv run python manage.py collectstatic --noinput
 
