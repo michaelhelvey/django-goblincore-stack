@@ -28,6 +28,9 @@ jobs:
             - name: Install dependencies
               run: pipenv sync --dev
 
+            - name: Setup staticfiles
+              run: pipenv run python manage.py collectstatic --noinput
+
             - name: Lint
               run: pipenv run ruff .
 
