@@ -8,8 +8,12 @@ RUN pip install pipenv
 RUN pipenv sync --dev
 
 # Staticfiles
-RUN apt-get install nodejs
-RUN npm i -g pnpm
+RUN apt-get update && \
+    wget -qO- https://deb.nodesource.com/setup_18.x | bash -
+
+RUN apt-get install -y nodejs
+RUN npm install -g pnpm
+
 RUN pnpm install
 RUN pnpm build
 
