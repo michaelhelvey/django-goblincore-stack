@@ -29,7 +29,7 @@ ENV = os.getenv("DJANGO_ENV")
 DEBUG = ENV != "production"
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".fly.dev", ".michaelhelvey.dev"]
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
@@ -77,9 +77,7 @@ if DEBUG:
     MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
 
 
-DEBUG_TOOLBAR_CONFIG = {
-    "ROOT_TAG_EXTRA_ATTRS": "data-turbo-permanent"
-}
+DEBUG_TOOLBAR_CONFIG = {"ROOT_TAG_EXTRA_ATTRS": "data-turbo-permanent"}
 
 ROOT_URLCONF = "base_site.urls"
 
@@ -213,7 +211,11 @@ def get_staticfiles_storage():
         return
 
 
-STORAGES = {"staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}}
+STORAGES = {
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
+    }
+}
 
 
 # Default primary key field type
