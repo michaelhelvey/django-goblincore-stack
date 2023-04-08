@@ -1,5 +1,6 @@
 # Build / vendor artifacts:
 node_modules
+coverage
 __pycache__/
 
 # Distribution / packaging
@@ -21,3 +22,4 @@ dist/
 staticfiles
 .pytest_cache
 emails
+

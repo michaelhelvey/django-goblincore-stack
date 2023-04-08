@@ -36,6 +36,7 @@ module.exports = {
 	],
 	rules: {
 		'no-console': ['warn'],
+		'@typescript-eslint/no-explicit-any': 'off',
 	},
 	// While we use vitest instead of jest, because of the very similar API, we
 	// can still make good use of jest's linting plugin
@@ -55,5 +56,5 @@ module.exports = {
 			},
 		},
 	],
-	ignorePatterns: ['node_modules', 'coverage', 'build', '*.js'],
+	ignorePatterns: ['node_modules', 'coverage', 'build', '*.js', '*.mjs'],
 }

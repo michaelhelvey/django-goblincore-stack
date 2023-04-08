@@ -1,5 +1,6 @@
 import alias from '@rollup/plugin-alias'
 import nodeResolve from '@rollup/plugin-node-resolve'
+import replace from '@rollup/plugin-replace'
 import { join } from 'path'
 import esbuild from 'rollup-plugin-esbuild'
 
@@ -8,6 +9,10 @@ const JS_PATH = join('app', 'static', 'js')
 const buildDir = fileType => join(STATIC_PATH, 'build', fileType)
 
 const jsPlugins = [
+	replace({
+		'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+		preventAssignment: true,
+	}),
 	alias({
 		entries: [
 			{ find: 'react', replacement: 'preact/compat' },
