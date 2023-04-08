@@ -12,7 +12,7 @@ class UserHomePageTest(IntegrationTestCase):
     def test_home_page_shows_login_link_to_logged_out_user(self):
         response = self.client.get(reverse("home"))
         login_link = self.getBySelectorOrFail(response, "a#login-link")
-        self.assertEqual(login_link.text, "Log In")
+        self.assertEqual(login_link.text.strip(), "Log In")
 
         self.assertSelectorDoesNotExist(response, "a#logout-link")
         self.assertLinkGoesToUrl(response, "a#login-link", reverse("account_login"))
@@ -131,7 +131,7 @@ class UserLogOutTest(IntegrationTestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertPageHasTitle(response, "Log Out")
-        self.assertEqual(self.getBySelectorOrFail(response, "h1").text, "Log Out")
+        self.assertEqual(self.getBySelectorOrFail(response, "h1").text.strip(), "Log Out")
 
         response = self.client.post(url)
         self.assertEqual(response.status_code, 302)
@@ -170,7 +170,10 @@ class PasswordResetTest(IntegrationTestCase):
         response = self.client.get(response.url)
         self.assertEqual(response.status_code, 200)
         self.assertPageHasTitle(response, "Reset Password")
-        self.assertEqual(self.getBySelectorOrFail(response, "h1").text, "Reset Password")
+        self.assertEqual(
+            self.getBySelectorOrFail(response, "h1").text.strip(),
+            "Reset Password",
+        )
 
         new_password = "zaxscf145*^^"
         response = self.client.post(

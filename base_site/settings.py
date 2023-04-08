@@ -213,11 +213,7 @@ def get_staticfiles_storage():
         return
 
 
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
-    }
-}
+STORAGES = {"staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}}
 
 
 # Default primary key field type
