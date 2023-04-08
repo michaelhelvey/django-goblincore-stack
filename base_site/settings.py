@@ -26,8 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 ENV = os.getenv("DJANGO_ENV")
-# DEBUG = ENV != "production"
-DEBUG = False
+DEBUG = ENV != "production"
 
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".fly.dev", ".michaelhelvey.dev"]
