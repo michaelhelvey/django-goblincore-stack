@@ -76,6 +76,11 @@ MIDDLEWARE = [
 if DEBUG:
     MIDDLEWARE += ["debug_toolbar.middleware.DebugToolbarMiddleware"]
 
+
+DEBUG_TOOLBAR_CONFIG = {
+    "ROOT_TAG_EXTRA_ATTRS": "data-turbo-permanent"
+}
+
 ROOT_URLCONF = "base_site.urls"
 
 TEMPLATES = [

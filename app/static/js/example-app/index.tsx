@@ -15,4 +15,10 @@ function App() {
 	)
 }
 
+// On intial page load, render the app
 render(<App />, document.getElementById('app')!)
+
+// Also render the app on subsequent "turbo" loads:
+document.addEventListener('turbo:load', () => {
+	render(<App />, document.getElementById('app')!)
+})
