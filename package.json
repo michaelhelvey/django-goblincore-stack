@@ -6,8 +6,7 @@
 		"dev": "npm-run-all -p \"build:* {@}\" -- -w",
 		"build": "NODE_ENV=production npm-run-all -p build:*",
 		"build:js": "rollup -c ./rollup.config.mjs",
-		"build:css": "postcss ./app/static/css/* --dir ./app/static/build/css",
-		"email:dev": "email dev"
+		"build:css": "postcss ./app/static/css/* --dir ./app/static/build/css"
 	},
 	"prettier": {
 		"semi": false,
@@ -18,6 +17,7 @@
 	},
 	"dependencies": {
 		"@hotwired/turbo": "^7.3.0",
+		"@rollup/plugin-alias": "^5.0.0",
 		"@rollup/plugin-node-resolve": "^15.0.1",
 		"@tailwindcss/forms": "^0.5.3",
 		"@tailwindcss/typography": "^0.5.9",
@@ -29,6 +29,7 @@
 		"npm-run-all": "^4.1.5",
 		"postcss": "^8.4.21",
 		"postcss-cli": "^10.1.0",
+		"preact": "^10.13.2",
 		"prettier": "^2.8.7",
 		"rollup": "^3.20.2",
 		"rollup-plugin-esbuild": "^5.0.0",

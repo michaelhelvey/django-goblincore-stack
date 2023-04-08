@@ -4,6 +4,9 @@ dependencies:
   '@hotwired/turbo':
     specifier: ^7.3.0
     version: 7.3.0
+  '@rollup/plugin-alias':
+    specifier: ^5.0.0
+    version: 5.0.0(rollup@3.20.2)
   '@rollup/plugin-node-resolve':
     specifier: ^15.0.1
     version: 15.0.1(rollup@3.20.2)
@@ -37,6 +40,9 @@ dependencies:
   postcss-cli:
     specifier: ^10.1.0
     version: 10.1.0(postcss@8.4.21)
+  preact:
+    specifier: ^10.13.2
+    version: 10.13.2
   prettier:
     specifier: ^2.8.7
     version: 2.8.7
@@ -277,6 +283,19 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
+    dev: false
+
+  /@rollup/plugin-alias@5.0.0(rollup@3.20.2):
+    resolution: {integrity: sha512-l9hY5chSCjuFRPsnRm16twWBiSApl2uYFLsepQYwtBuAxNMQ/1dJqADld40P0Jkqm65GRTLy/AC6hnpVebtLsA==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
+    dependencies:
+      rollup: 3.20.2
+      slash: 4.0.0
     dev: false
 
   /@rollup/plugin-node-resolve@15.0.1(rollup@3.20.2):
@@ -2055,6 +2074,10 @@ packages:
       nanoid: 3.3.6
       picocolors: 1.0.0
       source-map-js: 1.0.2
+    dev: false
+
+  /preact@10.13.2:
+    resolution: {integrity: sha512-q44QFLhOhty2Bd0Y46fnYW0gD/cbVM9dUVtNTDKPcdXSMA7jfY+Jpd6rk3GB0lcQss0z5s/6CmVP0Z/hV+g6pw==}
     dev: false
 
   /prettier@2.8.7:

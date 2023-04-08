@@ -1,8 +1,10 @@
 {
-	"include": ["**/*.ts"],
+	"include": ["**/*.ts", "**/*.tsx"],
 	"compilerOptions": {
 		"target": "ESNext",
 		"module": "ESNext",
+		"jsx": "react-jsx",
+		"jsxImportSource": "preact",
 		"moduleResolution": "bundler",
 		"lib": ["ESNext", "DOM"],
 		"esModuleInterop": true,
