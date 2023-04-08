@@ -26,10 +26,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
 
 ENV = os.getenv("DJANGO_ENV")
-DEBUG = ENV != "production"
+# DEBUG = ENV != "production"
+DEBUG = False
 
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".fly.dev", ".michaelhelvey.dev"]
+CSRF_TRUSTED_ORIGINS = ["https://*.fly.dev", "https://*.michaelhelvey.dev"]
+
 INTERNAL_IPS = [
     "127.0.0.1",
 ]

@@ -1,18 +1,10 @@
-FROM python:3.11
+FROM ghcr.io/michaelhelvey/python-node-x86_64:latest
 
 WORKDIR /code
 
 COPY . .
 
-RUN pip install pipenv
 RUN pipenv sync --dev
-
-# Staticfiles
-RUN apt-get update && \
-    wget -qO- https://deb.nodesource.com/setup_18.x | bash -
-
-RUN apt-get install -y nodejs
-RUN npm install -g pnpm
 
 RUN pnpm install
 RUN pnpm build
