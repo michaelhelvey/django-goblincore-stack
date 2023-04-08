@@ -18,6 +18,8 @@ django-anymail = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
+daphne = "*"
+channels = "*"
 
 [dev-packages]
 black = "*"

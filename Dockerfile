@@ -21,4 +21,4 @@ RUN pipenv run python ./manage.py collectstatic --noinput
 
 EXPOSE 8000
 
-CMD ["pipenv", "run", "gunicorn", "--bind", ":8000", "--workers", "2", "base_site.wsgi:application"]
+CMD ["pipenv", "run", "daphne", "-p", "8000", "base_site.asgi:application"]

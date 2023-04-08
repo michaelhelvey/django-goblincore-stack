@@ -38,6 +38,8 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
+    # System apps
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -45,13 +47,18 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
+
+    # Our apps
     "app",
+
+    # Thirdparty apps
     "django.forms",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
     "anymail",
     "rest_framework",
+    "channels"
 ]
 
 if DEBUG:
@@ -102,6 +109,7 @@ FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 
 
 WSGI_APPLICATION = "base_site.wsgi.application"
+ASGI_APPLICATION = 'base_site.asgi.application'
 
 AUTH_USER_MODEL = "app.User"
 AUTHENTICATION_BACKENDS = [

@@ -1,6 +1,6 @@
 default:
 	pnpm dev &
-	pipenv run python manage.py runserver_plus --nopin
+	pipenv run python manage.py runserver
 
 format:
 	pipenv run black -l 100 .

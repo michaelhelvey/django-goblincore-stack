@@ -12,7 +12,7 @@ template_dir = os.path.join(settings.BASE_DIR, "app", "templates", "email")
 
 
 class EmailListView(View):
-    def get(self, request, *args, **kwargs):
+    async def get(self, request, *args, **kwargs):
         files = filter(lambda x: x.is_file(), os.scandir(template_dir))
         return render(
             request,
@@ -22,6 +22,6 @@ class EmailListView(View):
 
 
 class EmailDetailView(View):
-    def get(self, request, *args, **kwargs):
+    async def get(self, request, *args, **kwargs):
         template = os.path.join(template_dir, kwargs["slug"])
         return render(request, template)
