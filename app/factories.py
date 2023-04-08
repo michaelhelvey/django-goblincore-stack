@@ -21,6 +21,4 @@ class UserFactory(DjangoModelFactory):
         if not create:
             return
 
-        EmailAddress.objects.create(
-            user=self, email=self.email, primary=True, verified=True
-        )
+        EmailAddress.objects.create(user=self, email=self.email, primary=True, verified=True)

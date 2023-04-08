@@ -47,10 +47,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "whitenoise.runserver_nostatic",
     "django.contrib.staticfiles",
-
     # Our apps
     "app",
-
     # Thirdparty apps
     "django.forms",
     "allauth",
@@ -58,7 +56,7 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "anymail",
     "rest_framework",
-    "channels"
+    "channels",
 ]
 
 if DEBUG:
@@ -109,7 +107,7 @@ FORM_RENDERER = "django.forms.renderers.TemplatesSetting"
 
 
 WSGI_APPLICATION = "base_site.wsgi.application"
-ASGI_APPLICATION = 'base_site.asgi.application'
+ASGI_APPLICATION = "base_site.asgi.application"
 
 AUTH_USER_MODEL = "app.User"
 AUTHENTICATION_BACKENDS = [
@@ -210,11 +208,7 @@ def get_staticfiles_storage():
         return
 
 
-STORAGES = {
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
-    }
-}
+STORAGES = {"staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"}}
 
 
 # Default primary key field type

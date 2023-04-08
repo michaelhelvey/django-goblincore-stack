@@ -26,7 +26,7 @@ urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     path("accounts/", include("allauth.urls")),
     path("accounts/profile/", UserProfileView.as_view(), name="profile"),
-    path("api/", include(router.urls))
+    path("api/", include(router.urls)),
 ]
 
 if settings.DEBUG:

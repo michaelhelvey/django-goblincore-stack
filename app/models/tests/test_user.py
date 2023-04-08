@@ -36,6 +36,4 @@ class UserTestCase(TestCase):
             last_name="Scott",
             email="michael.scott@dmifflin.com",
         )
-        self.assertEqual(
-            str(user), "Michael Scott <michael.scott@dmifflin.com>"
-        )
+        self.assertEqual(str(user), "Michael Scott <michael.scott@dmifflin.com>")

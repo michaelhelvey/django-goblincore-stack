@@ -15,9 +15,7 @@ class UserHomePageTest(IntegrationTestCase):
         self.assertEqual(login_link.text, "Log In")
 
         self.assertSelectorDoesNotExist(response, "a#logout-link")
-        self.assertLinkGoesToUrl(
-            response, "a#login-link", reverse("account_login")
-        )
+        self.assertLinkGoesToUrl(response, "a#login-link", reverse("account_login"))
 
     def test_home_page_shows_log_out_link_to_logged_in_user(self):
         user = UserFactory()
@@ -25,9 +23,7 @@ class UserHomePageTest(IntegrationTestCase):
 
         response = self.client.get(reverse("home"))
         self.assertSelectorDoesNotExist(response, "a#login-link")
-        self.assertLinkGoesToUrl(
-            response, "a#logout-link", reverse("account_logout")
-        )
+        self.assertLinkGoesToUrl(response, "a#logout-link", reverse("account_logout"))
 
 
 class LoginTest(IntegrationTestCase):
@@ -39,9 +35,7 @@ class LoginTest(IntegrationTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(self.getSoup(response).title.text.strip(), "Log In")
 
-        response = self.client.post(
-            "/accounts/login/", {"login": user.email, "password": passwd}
-        )
+        response = self.client.post("/accounts/login/", {"login": user.email, "password": passwd})
 
         # On successful login, the user should be redirected to the profile page
         self.assertEqual(response.status_code, 302)
@@ -54,9 +48,7 @@ class LoginTest(IntegrationTestCase):
         self.assertPageHasTitle(response, "Log In")
 
         # assert that we have a valid link to the sign up page
-        self.assertLinkGoesToUrl(
-            response, "a#create-account-link", reverse("account_signup")
-        )
+        self.assertLinkGoesToUrl(response, "a#create-account-link", reverse("account_signup"))
 
 
 class CreateAccountTest(IntegrationTestCase):
@@ -91,9 +83,7 @@ class CreateAccountTest(IntegrationTestCase):
         self.assertEqual(user.is_active, True)
 
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(
-            response.url, reverse("account_email_verification_sent")
-        )
+        self.assertEqual(response.url, reverse("account_email_verification_sent"))
 
         response = self.client.get(response.url)
         self.assertPageHasTitle(response, "Verify Your Email Address")
@@ -107,9 +97,7 @@ class CreateAccountTest(IntegrationTestCase):
 
         self.assertPageHasTitle(response, "Confirm Email Address")
         self.assertEqual(
-            self.getBySelectorOrFail(
-                response, "button#confirm-address-button"
-            ).text,
+            self.getBySelectorOrFail(response, "button#confirm-address-button").text,
             "Confirm",
         )
 
@@ -143,9 +131,7 @@ class UserLogOutTest(IntegrationTestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertPageHasTitle(response, "Log Out")
-        self.assertEqual(
-            self.getBySelectorOrFail(response, "h1").text, "Log Out"
-        )
+        self.assertEqual(self.getBySelectorOrFail(response, "h1").text, "Log Out")
 
         response = self.client.post(url)
         self.assertEqual(response.status_code, 302)
@@ -184,9 +170,7 @@ class PasswordResetTest(IntegrationTestCase):
         response = self.client.get(response.url)
         self.assertEqual(response.status_code, 200)
         self.assertPageHasTitle(response, "Reset Password")
-        self.assertEqual(
-            self.getBySelectorOrFail(response, "h1").text, "Reset Password"
-        )
+        self.assertEqual(self.getBySelectorOrFail(response, "h1").text, "Reset Password")
 
         new_password = "zaxscf145*^^"
         response = self.client.post(
@@ -194,9 +178,7 @@ class PasswordResetTest(IntegrationTestCase):
             {"password1": new_password, "password2": new_password},
         )
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(
-            response.url, reverse("account_reset_password_from_key_done")
-        )
+        self.assertEqual(response.url, reverse("account_reset_password_from_key_done"))
 
         response = self.client.get(response.url)
         self.assertPageHasTitle(response, "Password Reset Successful")

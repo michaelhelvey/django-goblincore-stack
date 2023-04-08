@@ -35,11 +35,7 @@ class IntegrationTestCase(DjangoTestCase):
         # but we can assume that a successful response to a request for a
         # specific path will "be" at that path.
         self.assertTrue(response.status_code < 400)
-        response_url = (
-            response.url
-            if hasattr(response, "url")
-            else response._request.path_info
-        )
+        response_url = response.url if hasattr(response, "url") else response._request.path_info
         self.assertEqual(response_url, url)
 
     def assertSelectorDoesNotExist(self, response, selector):
