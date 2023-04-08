@@ -1,31 +1,27 @@
-{% extends "layout/base.html" %}
+{% extends "./_partials/account_form_base.html" %}
 
 {% block page_title %}Confirm Email Address{% endblock page_title %}
 
-{% block content %}
-<div class="flex flex-col justify-center items-center h-full w-full p-4">
-	<div class="w-full max-w-md">
-		<h1 class="text-2xl font-bold">Confirm Email Address</h1>
-        <p class="mt-2">
-            {% with confirmation.email_address.email as email %}
-                Please confirm your email address: <a href="mailto:{{ email }}">{{ email }}</a>
-            {% endwith %}
-        </p>
+{% block form_title %}Confirm Email Address{% endblock form_title %}
 
-        {% if confirmation %}
-		<form method="POST" action="{% url 'account_confirm_email' confirmation.key %}" class="grid grid-cols-1 gap-4 mt-8">
-			{% csrf_token %}
+{% block form %}
 
-			<button id="confirm-address-button" class="button" type="submit">Confirm</button>
-		</form>
+{% if confirmation %}
+<p class="mt-2">
+    {% with confirmation.email_address.email as email %}
+        Please confirm your email address: <a href="mailto:{{ email }}">{{ email }}</a>
+    {% endwith %}
+</p>
+<form method="POST" action="{% url 'account_confirm_email' confirmation.key %}" class="grid grid-cols-1 gap-4 mt-8">
+    {% csrf_token %}
 
-        {% else %}
-            {% url 'account_email' as email_url %}
-            <p>
-                This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.
-            </p>
-        {% endif %}
-	</div>
-</div>
+    <button id="confirm-address-button" class="button" type="submit">Confirm</button>
+</form>
+{% else %}
+{% url 'account_email' as email_url %}
+<p class="mt-2">
+    This e-mail confirmation link expired or is invalid. Please <a href="{{ email_url }}">issue a new e-mail confirmation request</a>.
+</p>
+{% endif %}
 
-{% endblock %}
+{% endblock form %}

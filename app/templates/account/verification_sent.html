@@ -1,19 +1,16 @@
-{% extends 'layout/base.html' %}
+{% extends './_partials/account_form_base.html' %}
 
 {% block page_title %}Verify Your Email Address{% endblock page_title %}
 
-{% block content %}
+{% block form_title %}Verify Your Email Address{% endblock form_title %}
 
-<div class="flex flex-col justify-center items-center h-full w-full p-4">
-	<div class="w-full max-w-md">
-		<h1 class="text-2xl font-bold">Verify Your Email Address</h1>
-        <p class="mt-4">
-            We have sent an email to you with a link to verify your email
-            address.  If you do not see the verification e-mail in your main
-            inbox, check your spam folder.
-        </p>
-        <a href="{% url 'home' %}" class="block mt-4 text-indigo-700 underline">Go Home</a>
-	</div>
-</div>
+{% block form %}
 
-{% endblock content %}
+<p class="mt-4">
+    We have sent an email to you with a link to verify your email
+    address.  If you do not see the verification e-mail in your main
+    inbox, check your spam folder.
+</p>
+<a href="{% url 'home' %}" class="block mt-4 text-indigo-700 underline">Go Home</a>
+
+{% endblock form %}
