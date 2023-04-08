@@ -6,6 +6,10 @@ on:
     pull_request:
         branches: [master]
 
+concurrency:
+    group: ci-${{ github.head_ref || github.run_id }}
+    cancel-in-progress: true
+
 jobs:
     build:
         runs-on: ubuntu-latest
@@ -15,8 +19,8 @@ jobs:
 
         steps:
             - uses: actions/checkout@v3
-            - name: Set up Python ${{ matrix.python-version }}
 
+            - name: Set up Python ${{ matrix.python-version }}
               uses: actions/setup-python@v4
               with:
                   python-version: ${{ matrix.python-version }}
@@ -40,8 +44,14 @@ jobs:
             - name: Setup staticfiles
               run: pipenv run python manage.py collectstatic --noinput
 
-            - name: Lint
+            - name: Lint Python
               run: pipenv run ruff .
 
-            - name: Test
+            - name: Test Python
               run: pipenv run pytest --cov
+
+            - name: Lint JS
+              run: pnpm lint
+
+            - name: Test JS
+              run: pnpm test
