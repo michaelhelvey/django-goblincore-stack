@@ -32,9 +32,11 @@ shell:
 static-dev:
 	pnpm dev
 
-static-prod:
-	pnpm build
-	pipenv run python ./manage.py collectstatic
-
 urls:
 	pipenv run python ./manage.py show_urls
+
+install:
+	pipenv sync --dev
+	pnpm install
+	pnpm build
+	pipenv run python ./manage.py collectstatic --no-input
