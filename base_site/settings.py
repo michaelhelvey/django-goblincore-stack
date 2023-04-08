@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "anymail",
+    "rest_framework",
 ]
 
 if DEBUG:

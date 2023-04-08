@@ -17,6 +17,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
 
+from app.api.router import router
 from app.views.accounts.profile import UserProfileView
 from app.views.home import HomeView
 
@@ -25,6 +26,7 @@ urlpatterns = [
     path("", HomeView.as_view(), name="home"),
     path("accounts/", include("allauth.urls")),
     path("accounts/profile/", UserProfileView.as_view(), name="profile"),
+    path("api/", include(router.urls))
 ]
 
 if settings.DEBUG:
@@ -38,4 +40,5 @@ if settings.DEBUG:
             name="email_detail",
         ),
         path("__debug__/", include("debug_toolbar.urls")),
+        path("api-auth/", include("rest_framework.urls")),
     ]

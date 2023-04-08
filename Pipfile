@@ -15,6 +15,9 @@ gunicorn = "*"
 factory-boy = "*"
 django-debug-toolbar = "*"
 django-anymail = "*"
+djangorestframework = "*"
+markdown = "*"
+django-filter = "*"
 
 [dev-packages]
 black = "*"
