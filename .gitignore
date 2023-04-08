@@ -1,6 +1,5 @@
 # Build / vendor artifacts:
 node_modules
-coverage
 __pycache__/
 
 # Distribution / packaging
@@ -14,6 +13,8 @@ dist/
 .env.*
 .ruff_cache
 .coverage
+coverage
+.eslintcache
 
 # Editors
 .vscode
